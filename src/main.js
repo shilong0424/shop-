@@ -12,14 +12,17 @@ import home from './components/Home.vue';
 import shopcar from './components/shopcar/car.vue';
 import newslist from './components/news/newslist.vue';
 import newsinfo from './components/news/newsinfo.vue';
+import photolist from './components/photo/photolist.vue'
 // 3.0.3 定义路由规则
 var router1 = new VueRouter({
 	linkActiveClass : 'mui-active',
 	routes : [
+		{path : '/',component: home},	//当服务器刷新的时候自动进入主页面
 		{path : '/home', component: home},
 		{path : '/shopcar', component: shopcar},
 		{path : '/news/newslist',component:newslist},
-		{path : '/news/newsinfo/:id',component:newsinfo}//绑定分页的路由规则
+		{path : '/news/newsinfo/:id',component:newsinfo},//绑定分页的路由规则
+		{path : '/photo/photolist',component:photolist}
 	]
 })
 

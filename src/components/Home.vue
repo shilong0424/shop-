@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="temp">
+    <div id="tmpl">
         <!-- 轮播图组件 -->
         <mt-swipe :auto="4000">
             <mt-swipe-item v-for="item in list" :key="item.id">
@@ -86,13 +86,12 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style scoped>
     .mint-swipe{
         height: 300px;
     }
     .mint-swipe-item img{
         width: 100%;
-        height: 100%
     }
     .mint-swipe-item{
         background-color: red;

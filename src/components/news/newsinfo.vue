@@ -1,6 +1,5 @@
 <template>
-	<div class="temp">
-		<div class="temp">
+	<div id="tmpl">
         <div class="title">
             <h4 v-text="info.title"></h4>
             <p>{{info.add_time | datafmt('YYYY-MM-DD')}} {{info.click}}次浏览</p>
@@ -8,7 +7,6 @@
         <div id="content" v-html="info.content"></div>
         <!-- 1.3 实现评论组件 -->
 		<comment :id="id"></comment>
-    </div>
 	</div>
 </template>
 <script>
@@ -20,7 +18,7 @@ import comment from '../subcom/comment.vue';
 	export default{
 		//1.2 注册评论组件
 		components:{
-			comment
+			 comment
 		},
 		data(){
 			return {

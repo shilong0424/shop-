@@ -1,5 +1,5 @@
 <template>
-	<div class="temp">
+	<div id="tmpl">
 		<ul class="mui-table-view">
 				<li v-for='item in list' class="mui-table-view-cell mui-media">
 					<router-link v-bind="{to:'/news/newsinfo/'+item.id}">

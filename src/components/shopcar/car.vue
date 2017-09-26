@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="temp">
+    <div id="tmpl">
         购物车
     </div>
 </template>
