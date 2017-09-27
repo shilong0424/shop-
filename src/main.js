@@ -12,7 +12,9 @@ import home from './components/Home.vue';
 import shopcar from './components/shopcar/car.vue';
 import newslist from './components/news/newslist.vue';
 import newsinfo from './components/news/newsinfo.vue';
-import photolist from './components/photo/photolist.vue'
+import photolist from './components/photo/photolist.vue';
+import photoinfo from './components/photo/photoinfo.vue';
+import goodsList from './components/goods/goodslist.vue'
 // 3.0.3 定义路由规则
 var router1 = new VueRouter({
 	linkActiveClass : 'mui-active',
@@ -22,7 +24,9 @@ var router1 = new VueRouter({
 		{path : '/shopcar', component: shopcar},
 		{path : '/news/newslist',component:newslist},
 		{path : '/news/newsinfo/:id',component:newsinfo},//绑定分页的路由规则
-		{path : '/photo/photolist',component:photolist}
+		{path : '/photo/photolist',component:photolist},
+		{path : '/photo/photoinfo/:id',component:photoinfo},
+		{path : '/goods/goodslist',component:goodsList}
 	]
 })
 
@@ -46,6 +50,9 @@ import moment from 'moment';
 Vue.filter('datafmt',function(input,fmtstring){//input he fmtstring都不要带引号
 	return moment(input).format(fmtstring);
 });
+// 9.0 使用图片预览组件
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview);
 
 
 // 3.0 利用Vue对象进行解析渲染
