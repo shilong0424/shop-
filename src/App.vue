@@ -13,21 +13,30 @@
 			</router-link>
 			<router-link class="mui-tab-item" to="/tabbar-with-chat">
 				<span class="mui-icon mui-icon-email"></span>
-				<span class="mui-tab-label">消息</span>
+				<span class="mui-tab-label">会员</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/tabbar-with-contact">
-				<span class="mui-icon mui-icon-contact"><span class="mui-badge">9</span></span>
-				<span class="mui-tab-label">通讯录</span>
+				<span class="mui-icon mui-icon-contact"><span id="shopcar" class="mui-badge">0</span></span>
+				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/tabbar-with-map">
 				<span class="mui-icon mui-icon-gear"></span>
-				<span class="mui-tab-label">设置</span>
+				<span class="mui-tab-label">搜索</span>
 			</router-link>
 		</nav>
 	</div>
 </template>
 
 <script>
+	//4.2 引入vm.js，通过这个公共区域获取goodsinfo.vue组件中传来的购买数量的值
+	import {vm,COUNTSTR} from './kits/vm.js';
+    // 利用 vm.$on() 来注册 COUNTSTR这个常量代表的事件
+	vm.$on(COUNTSTR,function(count){
+	    //console.log(count);
+	    //将传过来的购买数量count的值渲染到图标上
+		var shopCar = document.querySelector('#shopcar');
+		shopCar.innerText = parseInt(shopCar.innerText) + count;
+	});
 	// 负责导出 .vue这个组件对象(它本质上是一个Vue对象,所以Vue中该定义的元素都可以使用)
 	export default{  // es6的导出对象的写法
 		data(){  //等价于 es5的 data:function(){

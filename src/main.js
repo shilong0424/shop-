@@ -14,7 +14,10 @@ import newslist from './components/news/newslist.vue';
 import newsinfo from './components/news/newsinfo.vue';
 import photolist from './components/photo/photolist.vue';
 import photoinfo from './components/photo/photoinfo.vue';
-import goodsList from './components/goods/goodslist.vue'
+import goodsList from './components/goods/goodslist.vue';
+import goodsinfo from './components/goods/goodsinfo.vue';
+import goodsdesc from './components/goods/goodsdesc.vue';
+import goodscomment from './components/goods/goodscomment.vue';
 // 3.0.3 定义路由规则
 var router1 = new VueRouter({
 	linkActiveClass : 'mui-active',
@@ -26,7 +29,10 @@ var router1 = new VueRouter({
 		{path : '/news/newsinfo/:id',component:newsinfo},//绑定分页的路由规则
 		{path : '/photo/photolist',component:photolist},
 		{path : '/photo/photoinfo/:id',component:photoinfo},
-		{path : '/goods/goodslist',component:goodsList}
+		{path : '/goods/goodslist',component:goodsList},
+		{path : '/goods/goodsinfo/:id',component:goodsinfo},
+		{path : '/goods/goodsdesc/:id',component:goodsdesc},
+		{path : '/goods/goodscomment/:id',component:goodscomment}
 	]
 })
 

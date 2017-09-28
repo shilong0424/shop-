@@ -1,11 +1,12 @@
 <template lang="html">
     <div id="tmpl">
-        <!-- 轮播图组件 -->
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="item in list" :key="item.id">
-                <img v-bind:src="item.img">
-            </mt-swipe-item>
-        </mt-swipe>
+       <!--&lt;!&ndash; &lt;!&ndash; 轮播图组件 &ndash;&gt;-->
+        <!--<mt-swipe :auto="4000">-->
+            <!--<mt-swipe-item v-for="item in list" :key="item.id">-->
+                <!--<img v-bind:src="item.img">-->
+            <!--</mt-swipe-item>-->
+        <!--</mt-swipe>&ndash;&gt;-->
+        <slider :imgs="list"></slider>
         <!--九宫格 -->
         <div class="mui-content">
 		        <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -54,14 +55,16 @@
 <script>
 //引入的是弹出框的组件（按需引用）
 import { Toast } from 'mint-ui';
+import slider from './subcom/slider.vue';
 //引入公共的域名路径
 import common from '../kits/common.js';
 export default {
+    components:{
+        slider
+    },
 	data(){
 		return {
-			list : [
-               
-            ]
+			list : []
 		}
 	},
 	created : function(){
@@ -87,17 +90,7 @@ export default {
 </script>
 
 <style scoped>
-    .mint-swipe{
-        height: 300px;
-    }
-    .mint-swipe-item img{
-        width: 100%;
-    }
-    .mint-swipe-item{
-        background-color: red;
-        width: 100%;
-        height: 300px;
-    }
+
     .mui-content,.mui-content ul{
 		background-color: #fff;
 	}

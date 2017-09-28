@@ -2,37 +2,21 @@
 	<div id="tmpl">
 		<div id="mui-content" class="mui-content" style="background-color:#fff">
 		    <ul class="mui-table-view mui-grid-view">
-		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
-					<a href="#">
-						<img class="mui-media-object" src="http://182.254.146.100:8080/upload/201504/20/thumb_201504200046589514.jpg">
-						<div class="mui-media-body">Color of SIP CBD</div>
+		        <li v-for="item in list " class="mui-table-view-cell mui-media mui-col-xs-6">
+					<router-link v-bind="{to:'/goods/goodsinfo/'+item.id}"> <!--url少写了一个/-->
+						<img class="mui-media-object" :src="item.img_url">
+						<div class="mui-media-body" v-text="item.title"></div>
 						<div class="desc">
 							<p>
-								<span>￥2099</span>
-								<s>￥2199</s>
+								<span>￥{{item.sell_price}}</span>
+								<s>￥{{item.market_price}}</s>
 							</p>
 							<p>
 								<h6 class="left">热卖中</h6>
-								<h6 class="right">剩余60件</h6>
+								<h6 class="right">剩余{{item.stock_quantity}}件</h6>
 							</p>
 						</div>
-					</a>
-				</li>
-		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
-					<a href="#">
-						<img class="mui-media-object" src="http://182.254.146.100:8080/upload/201504/20/thumb_201504200059017695.jpg">
-						<div class="mui-media-body">静静看这世界</div>
-						<div class="desc">
-							<p>
-								<span>￥2099</span>
-								<s>￥2199</s>
-							</p>
-							<p>
-							<h6 class="left">热卖中</h6>
-							<h6 class="right">剩余60件</h6>
-							</p>
-						</div>
-					</a>
+					</router-link>
 				</li>
 
 		    </ul>    
@@ -41,8 +25,30 @@
 </template>
 
 <script>
+	import common from '../../kits/common.js';
+	import { Toast } from 'mint-ui';
 	export default {
-
+		data(){
+			return {
+			    list:[]
+			}
+		},
+		created(){
+		    this.getList();
+		},
+		methods:{
+		    //向服务器发出数据请求，动态获取数据
+            getList(){
+		        var url = common.apidomain + '/api/getgoods?pageindex=1';
+		        this.$http.get(url).then(function(res){
+		            if(res.body.status != 0 ){
+                        Toast(res.body.message);
+                        return ;
+					}
+					this.list = res.body.message;
+				})
+			}
+		}
 	}
 </script>
 
@@ -53,7 +59,7 @@
 	-moz-box-shadow: 0 0 4px #000 ;
 	box-shadow: 0 0 4px #000 ;
 	margin-left: 4px;
-	padding-left: 0px;
+	padding-left: 5px;
 }
 
 #mui-content .mui-media-body{
