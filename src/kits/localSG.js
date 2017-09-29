@@ -23,3 +23,22 @@ export function getItem(){
 export function removeItem(){
 
 }
+//5.0 把数据导出到购物车详情页面
+export function getshopData(){
+    //5.1 先获取到本地存储的数据
+    var arr = getItem();
+    var shopData = {};
+//  arr的格式：
+// [{goodsid:87,count:1},{goodsid:87,count:3},{goodsid:88,count:1}]
+    for(var i =0;i < arr.length;i++){
+        var item = arr[i];
+        if(!shopData[item.goodsid]){
+            //item.goodsid 是键  item.count 是值
+            shopData[item.goodsid]= item.count;//这里shopData写成了arr   大失误！
+        }else {
+            var count = shopData[item.count];
+            shopData[item.goodsid] = count + item.count;
+        }
+    }
+    return shopData; //{87:1,87:1,88:3}这种格式
+}

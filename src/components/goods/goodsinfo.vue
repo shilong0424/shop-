@@ -14,6 +14,9 @@
                 </li>
                 <li class="inputli">
                     购买数量：<inputnumber class="inputnumber" v-on:send="getcount"></inputnumber>
+                    <transition @before-enter="beforEenter" @enter="Enter" @after-enter="afterEnter">
+                        <div v-if="isshow" class="ball"></div>
+                    </transition>
                 </li>
                 <li>
                     <mt-button type="primary" size="small">立即购买</mt-button>
@@ -58,6 +61,7 @@
         },
         data(){
             return {
+                isshow:false,
                 inputCount:1,
                 id:0,
                 imgs:[],
@@ -107,6 +111,19 @@
                 valueObj.count = this.inputCount;
                 //5.2 利用按需引入的setItem把数据传入到localSG.js
                 setItem(valueObj);
+                this.isshow = !this.isshow;
+            },
+            //5.0 实现小球动画
+            beforEenter(el){
+                el.style.transform="translate(0px,0px)";
+            },
+            Enter(el,done){
+                el.offsetWidth;
+                el.style.transform="translate(75px,366px)";
+                done();
+            },
+            afterEnter(el){
+                this.isshow = !this.isshow;
             }
         }
     }
@@ -155,5 +172,16 @@
         position: absolute;
         left:100px;
         top:5px;
+    }
+    .ball{
+        background-color: red;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        position: absolute;
+        left:150px;
+        top:10px;
+        transition: all 0.4s ease;
+        z-index: 100;
     }
 </style>

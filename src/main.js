@@ -18,6 +18,7 @@ import goodsList from './components/goods/goodslist.vue';
 import goodsinfo from './components/goods/goodsinfo.vue';
 import goodsdesc from './components/goods/goodsdesc.vue';
 import goodscomment from './components/goods/goodscomment.vue';
+import shopcar from './components/shopcar/car.vue';
 // 3.0.3 定义路由规则
 var router1 = new VueRouter({
 	linkActiveClass : 'mui-active',
@@ -32,7 +33,8 @@ var router1 = new VueRouter({
 		{path : '/goods/goodslist',component:goodsList},
 		{path : '/goods/goodsinfo/:id',component:goodsinfo},
 		{path : '/goods/goodsdesc/:id',component:goodsdesc},
-		{path : '/goods/goodscomment/:id',component:goodscomment}
+		{path : '/goods/goodscomment/:id',component:goodscomment},
+		{path : '/shopcar/car',component:shopcar}
 	]
 })
 
